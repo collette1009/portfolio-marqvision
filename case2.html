@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 2. Chrome Extension 직접 구현 → 1,151건 단독 처리 + 유료 AI 도구 비용 승인 | 오희은 — 마크비전</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --white: #FFFFFF; --bg-soft: #F7F7F8; --bg-card: #F3F3F4; --border: #E5E5E6; --text-1: #141416; --text-2: #50505A; --text-3: #909098; --charcoal: #282D32; --charcoal-2: #1A1E21; --charcoal-a: rgba(40,45,50,0.07); --sh-md: 0 4px 20px rgba(0,0,0,0.09); --r: 10px; --r-sm: 6px; --ease: cubic-bezier(.4,0,.2,1); --t: 0.22s; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+.hr { width: 100%; height: 1px; background: var(--border); }
+header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
+header.on { border-bottom-color: var(--border); }
+.h-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 16px; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+nav a { font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color var(--t); }
+nav a:hover { color: var(--charcoal); }
+.case-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+.case-hero-nav { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); text-decoration: none; margin-bottom: 32px; transition: color var(--t); }
+.case-hero-nav:hover { color: var(--charcoal); }
+.case-hero-title { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: var(--charcoal); line-height: 1.2; margin-bottom: 20px; max-width: 760px; }
+.case-hero-summary { font-size: 16px; color: var(--text-2); line-height: 1.85; max-width: 760px; padding: 20px 24px; background: var(--bg-soft); border-left: 3px solid var(--charcoal); border-radius: var(--r-sm); margin-bottom: 24px; }
+.case-hero-summary strong { color: var(--text-1); font-weight: 600; }
+.case-hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.meta-chip { background: var(--charcoal-a); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
+.sec { padding: 60px 0; }
+.sec-alt { background: var(--bg-soft); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+.sec-title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; color: var(--charcoal); line-height: 1.3; margin-bottom: 32px; }
+.problem-list, .did-list, .insight-list { display: flex; flex-direction: column; gap: 16px; }
+.problem-item, .did-item, .insight-item { padding: 22px 26px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); }
+.problem-item { font-size: 15px; color: var(--text-2); line-height: 1.8; }
+.problem-item strong { color: var(--text-1); font-weight: 600; }
+.problem-title { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+.did-number { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 10px; background: var(--charcoal-a); padding: 3px 12px; border-radius: 6px; }
+.did-title { font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; letter-spacing: -0.01em; }
+.did-desc { font-size: 15px; color: var(--text-2); line-height: 1.8; }
+.did-desc strong { color: var(--text-1); font-weight: 600; }
+.outcome-list { display: flex; flex-direction: column; gap: 14px; }
+.outcome-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-2); line-height: 1.8; }
+.outcome-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--charcoal); flex-shrink: 0; margin-top: 10px; }
+.outcome-item strong { color: var(--text-1); font-weight: 600; }
+.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.metric-box { padding: 24px 28px; background: var(--charcoal); border-radius: var(--r); }
+.metric-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.metric-value { font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.2; }
+.metric-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+.insight-item { display: flex; gap: 16px; align-items: flex-start; }
+.insight-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--charcoal-a); font-size: 13px; font-weight: 700; color: var(--charcoal); flex-shrink: 0; }
+.insight-body { font-size: 15px; color: var(--text-2); line-height: 1.85; padding-top: 4px; }
+.insight-body strong { color: var(--text-1); font-weight: 600; }
+.context-box { padding: 26px 30px; background: var(--bg-soft); border-radius: var(--r); border-left: 3px solid var(--charcoal); }
+.context-box p { font-size: 15px; color: var(--text-2); line-height: 1.85; }
+.context-box strong { color: var(--text-1); font-weight: 600; }
+.relevance-box { padding: 26px 30px; background: var(--white); border: 1.5px solid var(--charcoal); border-radius: var(--r); }
+.relevance-box h3 { font-size: 17px; font-weight: 700; color: var(--text-1); margin-bottom: 12px; letter-spacing: -0.01em; }
+.relevance-box p { font-size: 15px; color: var(--text-2); line-height: 1.85; }
+.relevance-box strong { color: var(--text-1); font-weight: 600; }
+.nav-cases { display: flex; justify-content: space-between; padding: 28px 0; gap: 16px; }
+.nav-case-link { display: flex; flex-direction: column; gap: 4px; text-decoration: none; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: var(--r); transition: border-color var(--t), box-shadow var(--t); max-width: 380px; }
+.nav-case-link:hover { border-color: var(--charcoal); box-shadow: var(--sh-md); }
+.nav-case-dir { font-size: 12px; font-weight: 600; color: var(--text-3); letter-spacing: 0.05em; }
+.nav-case-title { font-size: 14px; font-weight: 600; color: var(--text-1); line-height: 1.5; }
+footer { padding: 48px 0; border-top: 1px solid var(--border); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer-name { font-size: 20px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.03em; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: var(--r-sm); text-decoration: none; letter-spacing: -0.01em; transition: all var(--t) var(--ease); }
+.btn-dark { background: var(--charcoal); color: var(--white); border: 1.5px solid var(--charcoal); }
+.btn-dark:hover { background: var(--charcoal-2); transform: translateY(-1px); box-shadow: var(--sh-md); }
+.fi { opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.fi.show { opacity: 1; transform: none; }
+@media (max-width: 800px) { .case-hero { padding: 56px 0 44px; } .metric-grid { grid-template-columns: 1fr; } .nav-cases { flex-direction: column; } .nav-case-link { max-width: 100%; } .footer-inner { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 500px) { .case-hero-title { font-size: 22px; } .case-hero-summary { font-size: 14px; padding: 16px 18px; } .did-item { padding: 20px 22px; } .metric-value { font-size: 22px; } }
+</style>
+</head>
+<body>
+
+<header id="hd"><div class="h-inner"><a href="index.html" class="logo">오희은</a><nav><a href="index.html">← 전체 케이스 보기</a></nav></div></header>
+
+<div class="wrap">
+<section class="case-hero">
+<a href="index.html#cases" class="case-hero-nav"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>전체 케이스로 돌아가기</a>
+<h1 class="case-hero-title">Chrome Extension 직접 구현 → 8→2단계 축소 → 1,151건 단독 처리</h1>
+<div class="case-hero-summary">반복 입력이 분류 오류의 원인이었습니다.<br>Claude로 Chrome Extension을 직접 구현해 재배송·반품 처리의 반복 입력을 <strong>8단계에서 2단계로 축소</strong>했고, 귀책 기준값을 자동 반영해 분류 오류를 구조적으로 차단했습니다. <strong>1,151건을 단독 처리</strong>했고, 실무 효용이 인정되어 사내 최초이자 비개발 직군 중 유일하게 유료 AI 도구 비용을 지원받았습니다.</div>
+<div class="case-hero-meta"><span class="meta-chip">AI 자동화</span><span class="meta-chip">Chrome Extension</span><span class="meta-chip">유료 AI 도구 비용 승인</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
+</section>
+</div>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec">
+<div class="wrap">
+<p class="sec-eyebrow">Situation</p>
+<h2 class="sec-title">반복 입력이 분류 오류와 처리 지연을 만들고 있었습니다</h2>
+<div class="problem-list">
+<div class="problem-item fi"><div class="problem-title">재배송·반품 처리가 8단계 반복 입력으로 운영됐습니다</div>같은 정보(주문번호·귀책·사유·금액)를 8단계에 걸쳐 수동 입력해야 했습니다. 입력 누락·오타·중복이 분류 오류로 이어지고, 처리 리드타임을 늘렸습니다.</div>
+<div class="problem-item fi"><div class="problem-title">귀책 기준이 사람마다 달라 분류 편차가 컸습니다</div>고객 귀책·물류사 귀책·자사 귀책을 판단하는 기준이 명문화되지 않아 담당자별로 다르게 분류됐습니다. 분류가 다르면 정산도 다르게 흘렀습니다.</div>
+<div class="problem-item fi"><div class="problem-title">비개발 직군에서 AI 도구를 실무 도입한 사례가 없었습니다</div>회사는 Google Workspace 기반 Gemini Pro 사용 환경을 제공하고 있었지만, 운영 업무에 ChatGPT·Claude를 들여올 공식 경로는 없었습니다.</div>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+<div class="wrap">
+<p class="sec-eyebrow">What I Did</p>
+<h2 class="sec-title">Claude로 직접 만들어, 입력 단계와 분류 오류를 구조적으로 끊었습니다</h2>
+<div class="did-list">
+<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">기존 8단계 프로세스 매핑 — 반복 입력·귀책 분기 식별</div><div class="did-desc">처리 흐름 전 구간을 단계별로 매핑해 반복 입력 구간과 귀책 판단 분기 지점을 찾았습니다. 자동화할 수 있는 곳과 사람 판단이 필요한 곳을 분리했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">Claude로 Chrome Extension 직접 구현 — 입력 단계 자동 축약</div><div class="did-desc">비개발 직군이지만 Claude로 코드 없이 Chrome Extension을 직접 구현했습니다. 주문번호 1회 입력으로 후속 7단계가 자동 채워지는 구조로 <strong>8단계를 2단계로 축소</strong>했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">귀책 기준값 자동 반영 로직 설계 — 분류 오류 구조적 차단</div><div class="did-desc">귀책 판단 기준을 코드 안에 명문화하고 자동 반영했습니다. 사람이 매번 판단하지 않아도 같은 조건에서 같은 결과가 나오도록 — <strong>분류 편차를 구조적으로 제거</strong>했습니다.</div></div>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec">
+<div class="wrap">
+<p class="sec-eyebrow">AI Tooling Context</p>
+<h2 class="sec-title">AI는 도구이지 자랑이 아닙니다 — 실무 효용이 인정받았습니다</h2>
+<div class="context-box fi">
+<p>Google Workspace 기반 Gemini Pro 사용 환경이 있었음에도, 업무 특성상 <strong>ChatGPT와 Claude를 병행 활용</strong>했습니다. 반복 운영 문서화, 정책/약관 검토, 리스크 문구 정리, 자동화 설계에서 실제 효용이 확인되어 — <strong>사내 최초이자 비개발 직군 중 유일하게 유료 AI 도구 사용 비용을 지원받았습니다.</strong> AI를 답변 자동 생성에 쓰는 게 아니라 운영 품질을 높이는 도구로 적용했고, 회사가 그 효용을 인정한 결과입니다.</p>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+<div class="wrap">
+<p class="sec-eyebrow">Outcome</p>
+<h2 class="sec-title">반복 입력이 사라지고, 분류 오류가 구조적으로 차단됐습니다</h2>
+<div class="outcome-list">
+<div class="outcome-item fi"><strong>1,151건 단독 처리</strong> — Chrome Extension 기반 자동 분류·처리</div>
+<div class="outcome-item fi"><strong>8단계 → 2단계</strong> — 반복 입력 75% 축소</div>
+<div class="outcome-item fi"><strong>분류 오류 구조 차단</strong> — 귀책 기준값 자동 반영</div>
+<div class="outcome-item fi"><strong>유료 AI 도구 비용 지원</strong> — 실무 효용 인정, 사내 최초·비개발 유일</div>
+</div>
+<div class="metric-grid fi">
+<div class="metric-box"><div class="metric-label">Throughput</div><div class="metric-value">1,151건</div><div class="metric-sub">Chrome Extension 기반 단독 처리</div></div>
+<div class="metric-box"><div class="metric-label">Process</div><div class="metric-value">8 → 2단계</div><div class="metric-sub">반복 입력 75% 축소, 분류 오류 구조 차단</div></div>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec">
+<div class="wrap">
+<p class="sec-eyebrow">Relevance to MarqVision</p>
+<h2 class="sec-title">AI 솔루션의 실사용 피드백을 운영 개선으로 연결합니다</h2>
+<div class="relevance-box fi">
+<h3>AI를 실무에 적용해본 운영자만이 줄 수 있는 피드백이 있습니다</h3>
+<p>마크비전은 AI 기반 브랜드 보호 솔루션의 실사용자 피드백을 제품·운영 개선으로 연결하는 일을 핵심에 두고 있습니다. 저는 <strong>비개발 직군에서 AI 도구를 직접 구현·도입·승인까지 받아본 사람</strong>으로서, 솔루션 사용자 관점에서 무엇이 작동하고 무엇이 안 되는지를 운영 데이터로 피드백할 수 있다고 생각합니다. <strong>분류·요약·문서화·정책 검토·자동화 설계</strong>는 마크비전 침해 케이스 운영의 핵심 흐름과 정확히 겹칩니다.</p>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+<div class="wrap">
+<p class="sec-eyebrow">Insight</p>
+<h2 class="sec-title">이 경험에서 얻은 것</h2>
+<div class="insight-list">
+<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>AI는 답변 자동 생성보다 분류·문서화·검토·설계에서 더 큰 효용을 냅니다.</strong> 운영 품질을 높이는 도구로 쓸 때 실제 비용 지원까지 이어졌습니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">2</div><div class="insight-body"><strong>비개발 직군도 도구를 만들 수 있습니다.</strong> 코드를 쓰지 못해도 Claude를 활용하면 Chrome Extension 수준의 자동화를 직접 구현할 수 있고, 그게 1,151건 처리로 입증됐습니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">3</div><div class="insight-body"><strong>판단 기준은 코드 안에 명문화될 때 분류 편차가 사라집니다.</strong> 같은 조건에서 같은 결과가 나오도록 만드는 것이 결국 운영 품질입니다.</div></div>
+</div>
+</div>
+</section>
+
+<div class="wrap">
+<div class="nav-cases">
+<a href="case1.html" class="nav-case-link">
+<span class="nav-case-dir">← 이전 케이스</span>
+<span class="nav-case-title">배송 제약 오표시 7개월 추적 → CS 인입 0건 수렴</span>
+</a>
+<a href="case3.html" class="nav-case-link" style="text-align:right;">
+<span class="nav-case-dir">다음 케이스 →</span>
+<span class="nav-case-title">VOC 173건 전수 분류 → 82% 동일 원인 데이터로 규명</span>
+</a>
+</div>
+</div>
+
+<footer><div class="wrap"><div class="footer-inner"><div class="footer-name">오희은</div><a href="mailto:gldms1009@naver.com" class="btn btn-dark">이메일 보내기</a></div></div></footer>
+
+<script>
+const hd = document.getElementById('hd');
+window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
+const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0 });
+document.querySelectorAll('.fi').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight) { el.classList.add('show'); } else { io.observe(el); } });
+</script>
+</body>
+  </html>
