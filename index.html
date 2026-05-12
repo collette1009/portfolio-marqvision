@@ -83,12 +83,12 @@
     .sidebar-card-desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
 
     /* METRICS */
-    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-    .m-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); padding: 28px 18px; text-align: center; transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease), border-color var(--t); }
+    .metrics-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
+    .m-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); padding: 24px 14px; text-align: center; transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease), border-color var(--t); }
     .m-card:hover { box-shadow: var(--sh-md); transform: translateY(-3px); border-color: var(--charcoal); }
-    .m-number { display: inline-block; font-size: 28px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; background: var(--charcoal-a); padding: 4px 14px; border-radius: 8px; }
-    .m-label { font-size: 13px; font-weight: 600; color: var(--text-1); margin-bottom: 6px; }
-    .m-sub { font-size: 11px; color: var(--text-3); line-height: 1.5; }
+    .m-number { display: inline-block; font-size: 22px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; background: var(--charcoal-a); padding: 4px 12px; border-radius: 8px; }
+    .m-label { font-size: 12.5px; font-weight: 600; color: var(--text-1); margin-bottom: 6px; }
+    .m-sub { font-size: 10.5px; color: var(--text-3); line-height: 1.5; }
 
     /* CASE CARDS */
     .cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
@@ -166,6 +166,8 @@
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { flex-direction: column; align-items: flex-start; }
       .c-detail-outcomes { grid-template-columns: 1fr; }
+      .m-number { font-size: 24px; }
+      .m-label { font-size: 13px; }
     }
     @media (max-width: 500px) {
       .metrics-grid { grid-template-columns: 1fr 1fr; }
@@ -204,9 +206,9 @@
     <p class="hero-role">마크비전코리아 · 플랫폼 및 AI 운영 담당자 지원</p>
     <div class="hero-tagline">
       <p>
-        반복되는 이상 신호를 탐지하고, <strong>운영 기준과 AI 활용 구조로 전환해왔습니다.</strong><br>
-        플랫폼 오류 패턴 추적, CRM 케이스 추적 구조 정비, 생성형 AI 자동화, B2B 파트너 리스크 기준화를 통해 운영 반복과 판단 오류를 줄였습니다.<br>
-        <span style="font-size:15px;color:var(--text-3);">이상 신호 탐지 · 운영 기준 설계 · 플랫폼 이해 · AI 자동화 · 파트너 리스크 구조화</span>
+        <strong>반복되는 이상 신호를 끝까지 추적해, 구조 변화로 끊어왔습니다.</strong><br>
+        위조품·IP 침해도 결국 디지털 플랫폼에 반복되는 이상 신호의 문제입니다. <strong>마크비전이 풀고자 하는 방식이 — 제가 일해온 방식과 같은 언어입니다.</strong><br>
+        <span style="font-size:15px;color:var(--text-3);">이상 신호 탐지 · 운영 기준 설계 · AI 자동화 · 파트너 리스크 · 법무 협업</span>
       </p>
     </div>
     <div class="hero-cta">
@@ -243,6 +245,10 @@
           <p>
             마크비전이 다루는 위조품·IP 침해 탐지 운영도 같은 방식이라고 생각합니다.
             반복되는 이상 신호를 유형화하고, 기준을 세우고, 기술과 연결하는 구조를 만드는 일 — 그 사이클을 운영 현장에서 직접 경험해왔습니다.
+          </p>
+          <p>
+            위조품을 사고 속은 고객, 가짜에 잠식되는 브랜드, 자신의 창작물을 지키지 못한 사람들 — 결국 모두 <strong>사람의 신뢰가 무너지는 문제</strong>입니다.
+            플랫폼의 이상 신호를 끝까지 추적하는 일이 누군가의 신뢰를 지키는 일이라는 것을 알기에, 그 사이클을 마크비전에서 함께 만들고 싶습니다.
           </p>
         </div>
         <div class="about-chips fi">
@@ -302,6 +308,11 @@
         <div class="m-sub">배송 제약 상품 오표시 7개월 추적 끝에 subtext 1줄로 CS 인입 0건 수준 수렴</div>
       </div>
       <div class="m-card fi">
+        <div class="m-number">사내 최초</div>
+        <div class="m-label">비개발 유일 AI 업무비 승인</div>
+        <div class="m-sub">Claude·GPT 도입 필요성 직접 기획·제안 → 비개발 직군 최초 공식 승인 획득</div>
+      </div>
+      <div class="m-card fi">
         <div class="m-number">1,151건</div>
         <div class="m-label">Chrome Extension 단독 처리</div>
         <div class="m-sub">재배송·반품 8→2단계 축소, 귀책 기준값 자동 반영으로 분류 오류 구조적 차단</div>
@@ -312,9 +323,9 @@
         <div class="m-sub">프로모션 오인 VOC 173건 전수 분류, 82% 동일 구조 원인 규명, 운영 기준 직접 수립</div>
       </div>
       <div class="m-card fi">
-        <div class="m-number">400여 개</div>
-        <div class="m-label">파트너 규정 기준화</div>
-        <div class="m-sub">골프장 400여 곳 규정을 공통 판단 항목으로 재구성, 운영 편차 해소</div>
+        <div class="m-number">14.7배</div>
+        <div class="m-label">배상 회수율 개선 (법적 근거 발굴)</div>
+        <div class="m-sub">물류 계약서 Claude+NotebookLM 교차 검증 → 선공제 조항 발굴, 월 1,900만+ 차감 구조 확보</div>
       </div>
     </div>
   </div>
