@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case 1. 배송 제약 오표시 7개월 추적 → 플랫폼 단 수정 → CS 0건 | 오희은 — 마크비전</title>
+<title>Case 1. 7개월 보류된 개선안을 사고 시점에 재제안·당일 구현 | 오희은 — 마크비전</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
@@ -30,8 +30,6 @@ nav a:hover { color: var(--charcoal); }
 .sec-alt { background: var(--bg-soft); }
 .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
 .sec-title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; color: var(--charcoal); line-height: 1.3; margin-bottom: 32px; }
-.sec-body { font-size: 15px; color: var(--text-2); line-height: 1.85; max-width: 760px; }
-.sec-body strong { color: var(--text-1); font-weight: 600; }
 .problem-list, .did-list, .insight-list { display: flex; flex-direction: column; gap: 16px; }
 .problem-item, .did-item, .insight-item { padding: 22px 26px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); }
 .problem-item { font-size: 15px; color: var(--text-2); line-height: 1.8; }
@@ -82,9 +80,9 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <div class="wrap">
 <section class="case-hero">
 <a href="index.html#cases" class="case-hero-nav"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>전체 케이스로 돌아가기</a>
-<h1 class="case-hero-title">배송 제약 오표시 7개월 추적 → CTO 직접 제안 → CS 인입 0건 수렴</h1>
-<div class="case-hero-summary">반복 문의는 처리 속도가 아니라 <strong>플랫폼 구조의 문제</strong>였습니다.<br>배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 패턴을 7개월간 추적해 기술적 근본 원인을 파악했고, 상품 상세 화면에 subtext 1줄을 추가하는 MVP 개선안을 CTO에게 직접 제안해 <strong>관련 CS 인입이 0건 수준으로 수렴</strong>했습니다.</div>
-<div class="case-hero-meta"><span class="meta-chip">이상 신호 탐지</span><span class="meta-chip">7개월 추적</span><span class="meta-chip">CTO 직접 제안</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
+<h1 class="case-hero-title">7개월 보류된 개선안을 사고 시점에 다시 꺼내, CTO 재제안·당일 구현으로 끊었습니다</h1>
+<div class="case-hero-summary">반복 문의는 처리 속도가 아니라 <strong>플랫폼 구조의 문제</strong>였습니다.<br>배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 문제를 <strong>처음 발견 시점(2025.9)에 개선안으로 제안해 OK까지 받았지만</strong>, 개발 우선순위에 밀려 7개월간 같은 문의가 반복됐습니다. 두부 라인에서 실제 사고가 터지자 CTO에게 MVP 안을 직접 다시 제안했고, <strong>장바구니 subtext 1줄 추가로 당일 구현 → 일 6~10건의 반복 문의가 0건 수준으로 수렴</strong>했습니다.</div>
+<div class="case-hero-meta"><span class="meta-chip">이상 신호 탐지</span><span class="meta-chip">7개월 보류 → 재제안</span><span class="meta-chip">CTO 당일 구현</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
 </section>
 </div>
 
@@ -93,11 +91,11 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec">
 <div class="wrap">
 <p class="sec-eyebrow">Situation</p>
-<h2 class="sec-title">반복되는 이상 신호는 단건 처리로 끝낼 수 없었습니다</h2>
+<h2 class="sec-title">개선안은 이미 OK 받았는데, 7개월간 적용이 미뤄졌습니다</h2>
 <div class="problem-list">
-<div class="problem-item fi"><div class="problem-title">배송 제약 상품이 재고와 무관하게 '품절'로 표시됐습니다</div>도서·산간 등 특정 지역 배송이 불가능한 상품이 재고가 충분함에도 '품절'로 표시되는 현상이 간헐적으로 발생. 고객은 구매 가능한 상품을 못 사고 이탈하거나, 구매 후 배송 불가 안내를 받고 불만 CS를 남겼습니다.</div>
-<div class="problem-item fi"><div class="problem-title">동일 패턴이 7개월간 반복됐습니다</div>담당 업무 범위는 아니었지만, CS 인입 패턴이 일관되게 같은 상품군·지역 조합에서 반복되는 것을 확인했습니다. 단건 처리로 대응하면 같은 문의가 계속 들어오는 구조였습니다.</div>
-<div class="problem-item fi"><div class="problem-title">기술 원인을 모르면 제안할 수 없었습니다</div>"품절 표시 오류"라는 단순 진단으로는 개발팀이 움직일 수 없었습니다. <strong>배송 제약 로직과 재고 상태값 처리 방식의 차이</strong>를 직접 파악해야 했습니다.</div>
+<div class="problem-item fi"><div class="problem-title">첫 발견 시점에 개선안을 제안해 OK까지 받았습니다 (2025.9)</div>배송 제약 상품(특정 지역 배송 불가)이 재고와 무관하게 '품절'로 표시되는 문제를 처음 발견했을 때, 장바구니 단계에서 사용자에게 사유를 안내하는 MVP 개선안을 정리해 제안했습니다. <strong>유관 담당자 검토를 거쳐 OK까지 받았습니다.</strong></div>
+<div class="problem-item fi"><div class="problem-title">개발 우선순위에 밀려 적용이 7개월 동안 미뤄졌습니다</div>개선안은 승인됐지만 다른 개발 과제들이 우선순위에 들어가면서 적용이 계속 미뤄졌습니다. <strong>같은 문의가 일 6~10건씩 7개월간 반복</strong>됐고, 그 사이에도 CS 팀은 "상품을 하나씩 빼보세요"라는 안내로 같은 응대를 반복해야 했습니다.</div>
+<div class="problem-item fi"><div class="problem-title">두부 라인에서 실제 사고가 터졌습니다 (2026.4)</div>두부·연두부 라인에서 같은 구조의 문제로 실제 사고가 발생하며 반복 문의가 폭증했습니다. 7개월 동안 누적된 동일 패턴 데이터와 함께, <strong>"왜 OK 받은 개선안이 아직 안 들어갔는가"가 다시 화두</strong>가 됐습니다.</div>
 </div>
 </div>
 </section>
@@ -107,13 +105,13 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec sec-alt">
 <div class="wrap">
 <p class="sec-eyebrow">What I Did</p>
-<h2 class="sec-title">7개월 추적 끝에, subtext 1줄로 끊었습니다</h2>
+<h2 class="sec-title">보류된 제안을 사고 시점에 다시 꺼냈습니다</h2>
 <div class="did-list">
-<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">CS 인입 패턴 분석 — 동일 상품군·지역 조합 유형화</div><div class="did-desc">반복 문의를 처리 대상이 아니라 <strong>분석 대상</strong>으로 봤습니다. 7개월간의 CS 데이터를 동일 상품군·지역 조합 기준으로 유형화해, 반복의 원인이 고객 실수가 아니라 플랫폼 구조임을 데이터로 증명했습니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">기술 원인 추적 — 배송 제약 로직과 재고 상태값 처리 차이 파악</div><div class="did-desc">개발팀에 단순 "오류" 보고가 아니라, <strong>배송 제약 로직과 재고 상태값이 다른 처리 흐름을 타고 있어 표시 단계에서 충돌</strong>한다는 기술 원인을 파악했습니다. 운영기획이 기술 제약을 이해해야 개발팀이 움직입니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">MVP 개선안 문서화 — subtext 1줄 추가 제안</div><div class="did-desc">상품 상세 화면에 <strong>배송 제약 안내 subtext 1줄</strong>을 추가하는 최소 실행 단위로 설계했습니다. 모든 예외를 처리하려 하지 않고, 가장 작은 변화로 가장 큰 효과를 낼 수 있는 지점을 짚었습니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 04</div><div class="did-title">CTO 직접 제안 — 구조적 원인과 예상 효과 정리</div><div class="did-desc">반년 전 거절됐던 이슈를 CS 데이터·기술 원인·MVP 스펙과 함께 <strong>CTO에게 직접 재제안</strong>했습니다. 데이터가 쌓이면 같은 문제를 더 설득력 있게 다시 꺼낼 수 있고, 실행으로 이어집니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 05</div><div class="did-title">적용 후 모니터링 — 0건 수렴 확인 + 유사 상품군 확장</div><div class="did-desc">제안 → 당일 구현·배포 → 관련 CS 인입 0건 수준 수렴을 확인했고, 상품운영파트가 동일 subtext 구조를 1+1·2+1 프로모션 상품으로 자체 확장 적용했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">최초 발견 + MVP 개선안 제안 → OK 획득 (2025.9)</div><div class="did-desc">배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 패턴을 처음 발견했습니다. 장바구니 단계에서 사용자에게 사유를 안내하는 <strong>최소 실행 단위 MVP</strong>를 정리해 유관 담당자에게 별도로 가져갔고, <strong>OK 회신까지 받았습니다.</strong></div></div>
+<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">7개월 보류 — 적용이 계속 미뤄지는 동안 데이터 누적</div><div class="did-desc">OK 받은 개선안이 다른 개발 과제들에 밀려 적용되지 않는 동안, <strong>같은 문의가 일 6~10건씩 7개월간 반복</strong>됐습니다. 단건 응대로 막을 수 없는 구조였고, 적용 지연 비용이 매일 쌓이고 있었습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">두부 라인 사고 발생 — 재제안 트리거 확보 (2026.4)</div><div class="did-desc">두부·연두부 라인에서 같은 구조의 문제로 실제 사고가 터지면서 반복 문의가 폭증했습니다. 7개월 누적 데이터 + 사고 임팩트가 같은 방향을 가리키고 있었고, <strong>"왜 이 개선안이 아직 안 들어갔는가"가 다시 의제로 올라왔습니다.</strong></div></div>
+<div class="did-item fi"><div class="did-number">Step 04</div><div class="did-title">CTO에게 직접 MVP 재제안 — 데이터·사고·기존 OK 근거 정리</div><div class="did-desc">7개월 누적 VOC 데이터, 두부 사고 임팩트, 기존 승인 이력, MVP 스펙을 한 자료로 묶어 <strong>CTO에게 직접 다시 제안</strong>했습니다. 보류됐던 안건도 트리거와 데이터가 함께 생기면 같은 방향으로 다시 꺼낼 수 있습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 05</div><div class="did-title">당일 구현 → 0건 수렴 + 유사 상품군 확장</div><div class="did-desc">제안 → <strong>당일 구현·배포</strong>로 장바구니 subtext 1줄이 추가됐고, 일 6~10건의 반복 문의가 0건 수준으로 수렴했습니다. 상품운영파트가 동일 subtext 구조를 1+1·2+1 프로모션 상품으로 자체 확장 적용했습니다.</div></div>
 </div>
 </div>
 </section>
@@ -123,16 +121,16 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec">
 <div class="wrap">
 <p class="sec-eyebrow">Outcome</p>
-<h2 class="sec-title">구조가 바뀌자 문의가 사라졌습니다</h2>
+<h2 class="sec-title">7개월 보류됐던 안건이 당일 들어가자 문의가 사라졌습니다</h2>
 <div class="outcome-list">
-<div class="outcome-item fi"><strong>CS 인입 0건 수준 수렴</strong> — 배송 제약 오표시 관련 문의 완전 해소</div>
-<div class="outcome-item fi"><strong>플랫폼 구조 개선</strong> — 단건 처리가 아닌 근본 원인 해결</div>
-<div class="outcome-item fi"><strong>확장 적용</strong> — 동일 패턴 다른 상품군까지 기준 확산</div>
-<div class="outcome-item fi"><strong>재제안 가능한 패턴 정착</strong> — 데이터 기반 재제안이 사내 개선 표준으로 전파</div>
+<div class="outcome-item fi"><strong>일 6~10건 → 0건 수준</strong> — 7개월 반복된 배송 제약 오표시 문의 완전 해소</div>
+<div class="outcome-item fi"><strong>제안 → 당일 구현·배포</strong> — 7개월 보류됐던 이슈, 재제안 후 즉시 적용</div>
+<div class="outcome-item fi"><strong>확장 적용</strong> — 동일 subtext 구조가 1+1·2+1 프로모션 상품군까지 자체 확산</div>
+<div class="outcome-item fi"><strong>재제안 가능한 패턴 정착</strong> — 보류된 안건을 데이터·트리거와 함께 다시 꺼내는 흐름이 사내 개선 표준으로 전파</div>
 </div>
 <div class="metric-grid fi">
-<div class="metric-box"><div class="metric-label">Key Metric</div><div class="metric-value">0건</div><div class="metric-sub">관련 CS 인입 수렴 — 7개월 반복 패턴 완전 해소</div></div>
-<div class="metric-box"><div class="metric-label">Speed</div><div class="metric-value">당일 구현·배포</div><div class="metric-sub">반년 전 거절됐던 이슈, 데이터 재제안 후 당일 완료</div></div>
+<div class="metric-box"><div class="metric-label">Key Metric</div><div class="metric-value">일 6~10건 → 0건</div><div class="metric-sub">7개월 반복된 문의 완전 해소</div></div>
+<div class="metric-box"><div class="metric-label">Speed</div><div class="metric-value">당일 구현·배포</div><div class="metric-sub">7개월 보류됐던 이슈, 데이터 재제안 후 당일 완료</div></div>
 </div>
 </div>
 </section>
@@ -144,8 +142,8 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <p class="sec-eyebrow">Relevance to MarqVision</p>
 <h2 class="sec-title">같은 원리가 침해 운영에도 작동합니다</h2>
 <div class="relevance-box fi">
-<h3>반복되는 이상 신호는 단건 처리가 아니라 구조로 끊어야 합니다</h3>
-<p>위조품·무단 판매·콘텐츠 도용도 <strong>디지털 플랫폼 위에서 반복적으로 포착되는 리스크 신호</strong>입니다. 한 건씩 takedown만 반복하면 같은 패턴이 계속 들어옵니다. 마크비전이 자동화된 보호 흐름으로 풀려는 문제도 — 패턴을 유형화하고 기술과 연결해 구조를 만드는 일이라고 봤습니다. 이 케이스는 그 사이클을 운영 현장에서 직접 경험한 첫 시작점입니다.</p>
+<h3>보류된 개선안도 데이터와 트리거가 함께 생기면 다시 들어갑니다</h3>
+<p>위조품·무단 판매·콘텐츠 도용도 <strong>디지털 플랫폼 위에서 반복적으로 포착되는 리스크 신호</strong>입니다. 한 건씩 takedown만 반복하면 같은 패턴이 계속 들어오고, 개선안이 있어도 우선순위에 밀려 적용이 지연되는 일이 흔합니다. 이 케이스는 — <strong>"보류된 안건도 누적 데이터와 사고 트리거가 함께 생기면 같은 방향으로 다시 꺼낼 수 있다"</strong>는 운영 사례입니다. 마크비전이 자동화된 보호 흐름으로 풀려는 문제도 — 패턴을 유형화하고 기술과 연결해 구조를 만드는 일이라고 봤습니다.</p>
 </div>
 </div>
 </section>
@@ -157,9 +155,9 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <p class="sec-eyebrow">Insight</p>
 <h2 class="sec-title">이 경험에서 얻은 것</h2>
 <div class="insight-list">
-<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>반복 신호는 처리 대상이 아니라 분석 대상입니다.</strong> 빠르게 응대하는 것이 아니라, 왜 반복되는지를 데이터로 규명했을 때 비로소 신호가 사라집니다. 침해 탐지 운영에서도 같은 원리가 작동합니다.</div></div>
-<div class="insight-item fi"><div class="insight-num">2</div><div class="insight-body"><strong>거절됐던 제안도 데이터가 생기면 다시 꺼낼 수 있습니다.</strong> "기술 제약"이라는 답변을 최종 판단으로 받아들이지 않았습니다. 데이터가 쌓이면 같은 문제를 더 설득력 있게 재제안할 수 있고, 그게 실행으로 이어집니다.</div></div>
-<div class="insight-item fi"><div class="insight-num">3</div><div class="insight-body"><strong>기술 제약은 포기 이유가 아니라 MVP를 설계하는 조건입니다.</strong> 모든 예외를 처리하려 하지 않고, 제약 안에서 가장 작은 실행 단위를 설계했을 때 개발팀이 움직였습니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>OK 받은 제안도 보류될 수 있고, 보류된 제안도 다시 꺼낼 수 있습니다.</strong> 처음 승인을 받았다고 끝나는 게 아니라 — 적용 지연이 누적되는 동안 데이터를 모으고, 트리거가 생긴 시점에 다시 의제로 올리는 일이 운영자의 역할입니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">2</div><div class="insight-body"><strong>사고는 가장 강력한 트리거지만, 사고 전에 적용됐어야 했습니다.</strong> 두부 사고가 있어 재제안이 통했다는 사실은 — 같은 안건을 사고 없이 끌어낼 방법을 운영자가 더 일찍 찾았어야 했다는 교훈이기도 합니다. 다음 사이클에서는 사고 전에 트리거를 만드는 방향으로 일하고 있습니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">3</div><div class="insight-body"><strong>장바구니 subtext 1줄이 7개월 반복 문의를 끊었습니다.</strong> 가장 작은 변화로 가장 큰 효과를 낼 수 있는 지점을 짚어 MVP를 설계했을 때, 개발팀이 당일 움직였습니다. 운영기획이 기술 제약을 이해하면 실행까지의 거리가 짧아집니다.</div></div>
 </div>
 </div>
 </section>
@@ -183,4 +181,4 @@ const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.
 document.querySelectorAll('.fi').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight) { el.classList.add('show'); } else { io.observe(el); } });
 </script>
 </body>
-                                                                                                                                                                                                                                </html>
+                           </html>
