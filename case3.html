@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case 3. VOC 173건 전수 분류 → 82% 동일 구조 원인 규명 | 오희은 — 마크비전</title>
+<title>Case 3. VOC 173건 분석으로 CRM 필드의 구조적 한계를 진단하고 재설계 | 오희은 — 마크비전</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
@@ -80,9 +80,9 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <div class="wrap">
 <section class="case-hero">
 <a href="index.html#cases" class="case-hero-nav"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>전체 케이스로 돌아가기</a>
-<h1 class="case-hero-title">VOC 173건 전수 분류 → 82% 동일 구조 원인 데이터로 규명</h1>
-<div class="case-hero-summary">반복 인입은 응대가 아니라 <strong>분류 체계로 끊는 일</strong>이었습니다.<br>프로모션 오인 VOC 173건을 유형·발생 시점·고객 의도 기준으로 전수 라벨링해 <strong>82%가 동일 구조에서 나온다는 것을 데이터로 확정</strong>했고, 운영 기준을 직접 수립해 반복 문의를 구조적으로 차단했습니다.</div>
-<div class="case-hero-meta"><span class="meta-chip">VOC 패턴 분석</span><span class="meta-chip">전수 분류·라벨링</span><span class="meta-chip">데이터 기반 규명</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
+<h1 class="case-hero-title">VOC 173건 분석으로 CRM 필드의 구조적 한계를 진단하고 재설계했습니다</h1>
+<div class="case-hero-summary">반복 인입은 응대가 아니라 <strong>입력 구조</strong> 문제였습니다.<br>프로모션 오인 VOC 173건을 전수 분류해 <strong>82%가 동일 패턴에서 나온다는 것을 데이터로 확정</strong>했고, 분석 결과가 가리킨 <strong>CRM 필드의 구조적 한계</strong>를 진단했습니다. 환불·교환 필드를 자유 입력에서 고객 의도 기반 선택값으로 재구성해 <strong>CS 재확인 왕복을 95%+ 제거</strong>했습니다.</div>
+<div class="case-hero-meta"><span class="meta-chip">VOC 패턴 분석</span><span class="meta-chip">CRM 필드 진단·재설계</span><span class="meta-chip">데이터 기반 구조 변경</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
 </section>
 </div>
 
@@ -91,11 +91,11 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec">
 <div class="wrap">
 <p class="sec-eyebrow">Situation</p>
-<h2 class="sec-title">반복 인입이 있는데 원인이 진단된 적이 없었습니다</h2>
+<h2 class="sec-title">반복 인입의 근본 원인이 진단된 적이 없었습니다</h2>
 <div class="problem-list">
-<div class="problem-item fi"><div class="problem-title">프로모션 오인 VOC가 일관성 없이 쌓이고 있었습니다</div>같은 안내 구조에서 같은 오해가 반복적으로 발생했지만, 어떤 안내가 오인을 만드는지 명확히 진단된 적이 없었습니다.</div>
-<div class="problem-item fi"><div class="problem-title">개별 응대로는 반복 인입을 막을 수 없었습니다</div>한 건씩 친절하게 답해도 같은 패턴의 문의가 계속 들어왔습니다. 응대 품질이 아니라 구조가 문제였습니다.</div>
-<div class="problem-item fi"><div class="problem-title">CRM 필드가 고객 의도를 담아내지 못했습니다</div>환불·교환 사유 입력값이 처리 흐름과 연결되지 않아 — 같은 의도에도 매번 재확인하는 왕복이 발생했습니다.</div>
+<div class="problem-item fi"><div class="problem-title">프로모션 오인 VOC가 일관성 없이 쌓이고 있었습니다</div>같은 안내 구조에서 같은 오해가 반복 발생했지만, 어떤 안내가 오인을 만드는지 명확히 진단된 적이 없었습니다.</div>
+<div class="problem-item fi"><div class="problem-title">개별 응대로는 반복 인입을 막을 수 없었습니다</div>한 건씩 응대해도 같은 패턴의 문의가 계속 들어왔습니다. 응대 품질이 아니라 구조가 문제였습니다.</div>
+<div class="problem-item fi"><div class="problem-title">분석 없이는 어떤 구조를 바꿔야 할지 알 수 없었습니다</div>CRM 필드, 안내 문구, 정책 문서 — 의심 가는 지점은 많았지만 데이터로 짚어내지 않으면 어디를 손대야 할지 결정할 수 없었습니다.</div>
 </div>
 </div>
 </section>
@@ -105,12 +105,12 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec sec-alt">
 <div class="wrap">
 <p class="sec-eyebrow">What I Did</p>
-<h2 class="sec-title">전수 분류로 패턴을 가시화하고, 구조를 바꿨습니다</h2>
+<h2 class="sec-title">분석 → 진단 → 재설계 흐름으로 입력 구조를 바꿨습니다</h2>
 <div class="did-list">
-<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">VOC 173건 전수 분류 — 유형·발생 시점·고객 의도 기준 라벨링</div><div class="did-desc">프로모션 오인 관련 VOC 173건을 전수로 라벨링했습니다. 단순 유형 태깅이 아니라 <strong>유형·발생 시점·고객 의도</strong> 3축으로 분류해 — 같은 유형 안에서도 다른 의도가 있다는 것을 데이터로 가시화했습니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">구조적 원인 가설 도출 — 82% 동일 구조 데이터로 확정</div><div class="did-desc">분류 결과를 교차 분석한 결과 — <strong>173건 중 82%가 동일한 안내 구조 패턴에서 오인을 발생시키고 있었습니다.</strong> 추측이 아니라 데이터로 확정된 근본 원인입니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">운영 기준 직접 수립 — 초회 예외 AS·재인입 정책 안내 종결</div><div class="did-desc">82% 패턴에 대해 <strong>초회 예외 AS 처리 기준과 재인입 정책 안내 종결 기준</strong>을 직접 수립했습니다. 응대가 아니라 운영 흐름 자체를 바꿨습니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 04</div><div class="did-title">CRM 필드 재구성 — 고객 의도 기반 선택값으로 전환</div><div class="did-desc">환불·교환 CRM 필드를 자유 입력에서 <strong>고객 의도 기반 선택값</strong>으로 재구성했습니다. 개발 범위 최소화 스펙으로 협의해 빠르게 적용했고, 결과적으로 <strong>CS 재확인 왕복을 95%+ 제거</strong>했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">VOC 173건 전수 분류 — 유형·발생 시점·고객 의도 3축 라벨링</div><div class="did-desc">프로모션 오인 관련 VOC 173건을 전수로 라벨링했습니다. 단순 유형 태깅이 아니라 <strong>유형·발생 시점·고객 의도</strong> 3축으로 분류해, 같은 유형 안에서도 다른 의도가 있다는 것을 데이터로 가시화했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">82% 동일 패턴 데이터로 확정 — 근본 원인 규명</div><div class="did-desc">분류 결과를 교차 분석한 결과 <strong>173건 중 82%가 동일 패턴에서 오인을 발생시키고 있었습니다.</strong> 추측이 아니라 데이터로 확정된 근본 원인입니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">CRM 필드의 구조적 한계 진단 — 패턴이 가리킨 입력 구조 문제</div><div class="did-desc">82% 패턴을 추적해보니 <strong>환불·교환 CRM 필드의 자유 입력 구조가 고객 의도를 담아내지 못해</strong> 재확인 왕복을 만들어내고 있었습니다. 분석이 손댈 지점을 정확히 짚어줬습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 04</div><div class="did-title">CRM 필드 재설계 + 운영 기준 수립 — 95%+ 재확인 제거</div><div class="did-desc">환불·교환 필드를 자유 입력에서 <strong>고객 의도 기반 선택값</strong>으로 재구성하고, 82% 패턴에 대한 <strong>초회 예외 AS 기준·재인입 정책 안내 종결 기준</strong>을 함께 수립했습니다. 개발 범위 최소화 스펙으로 협의해 빠르게 적용했고, <strong>CS 재확인 왕복을 95%+ 제거</strong>했습니다.</div></div>
 </div>
 </div>
 </section>
@@ -120,12 +120,12 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec">
 <div class="wrap">
 <p class="sec-eyebrow">Outcome</p>
-<h2 class="sec-title">반복 인입이 데이터로 사라졌습니다</h2>
+<h2 class="sec-title">분석이 가리킨 구조를 바꿔, 반복 인입을 끊었습니다</h2>
 <div class="outcome-list">
 <div class="outcome-item fi"><strong>82% 동일 원인 규명</strong> — 173건 전수 분류로 데이터 기반 확정</div>
-<div class="outcome-item fi"><strong>반복 문의 구조 차단</strong> — 운영 기준 직접 수립 후 종결 흐름 확립</div>
-<div class="outcome-item fi"><strong>CS 재확인 95%+ 제거</strong> — 고객 의도 기반 CRM 필드 재구성</div>
-<div class="outcome-item fi"><strong>리드타임 단축</strong> — 개발 범위 최소화 스펙 협의 진행</div>
+<div class="outcome-item fi"><strong>CRM 필드 구조 변경</strong> — 자유 입력 → 고객 의도 기반 선택값</div>
+<div class="outcome-item fi"><strong>CS 재확인 95%+ 제거</strong> — 입력 구조가 처리 흐름과 연결됨</div>
+<div class="outcome-item fi"><strong>운영 기준 정착</strong> — 초회 예외 AS·재인입 종결 기준 수립</div>
 </div>
 <div class="metric-grid fi">
 <div class="metric-box"><div class="metric-label">Pattern Analysis</div><div class="metric-value">173건 · 82%</div><div class="metric-sub">전수 분류 + 동일 구조 원인 데이터 확정</div></div>
@@ -141,8 +141,8 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <p class="sec-eyebrow">Relevance to MarqVision</p>
 <h2 class="sec-title">침해 트렌드 분석도 같은 사이클로 운영됩니다</h2>
 <div class="relevance-box fi">
-<h3>탐지 → 유형 분류 → 패턴 규명 → 운영 기준 → 자동화</h3>
-<p>마크비전의 침해 데이터 분석도 동일한 사이클을 따릅니다. <strong>침해 신호를 유형·플랫폼·발생 시점·침해 유형 기준으로 라벨링</strong>하고, 반복 패턴을 데이터로 규명한 다음, 그 결과를 takedown 워크플로우와 AI 솔루션 개선으로 연결하는 일입니다. 173건 전수 분류 경험은 — 침해 케이스를 단건이 아닌 패턴으로 보고, 운영 기준과 솔루션 피드백으로 연결하는 능력의 직접 증거입니다.</p>
+<h3>분석 → 구조 진단 → 재설계는 침해 운영 사이클과 같은 흐름입니다</h3>
+<p>마크비전의 침해 데이터 운영도 같은 사이클을 따릅니다. <strong>침해 신호를 유형·플랫폼·발생 시점 기준으로 라벨링</strong>하고, 반복 패턴을 데이터로 규명한 다음, 그 결과가 가리키는 입력 구조·정책·조치 흐름의 한계를 진단해 재설계로 연결하는 일입니다. 173건 전수 분류로 CRM 필드의 구조적 한계를 짚어 재설계한 경험은 — 침해 케이스를 단건이 아닌 패턴으로 보고, 운영 데이터를 솔루션 피드백과 구조 변경으로 연결하는 능력의 직접 증거입니다.</p>
 </div>
 </div>
 </section>
@@ -154,7 +154,7 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <p class="sec-eyebrow">Insight</p>
 <h2 class="sec-title">이 경험에서 얻은 것</h2>
 <div class="insight-list">
-<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>전수 분류는 한 번만 해도 됩니다.</strong> 173건을 한 번 다 분류하면 그 다음부터는 같은 기준이 운영 표준으로 굴러갑니다. 일회성 비용이지만 영구적 효용을 만듭니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>분석은 어디를 바꿔야 할지 짚어줄 때 가치가 있습니다.</strong> 173건 전수 분류는 그 자체로 끝이 아니라, 손댈 구조를 정확히 가리켰을 때 의미가 생겼습니다.</div></div>
 <div class="insight-item fi"><div class="insight-num">2</div><div class="insight-body"><strong>3축 분류(유형·시점·의도)는 단축(유형)보다 강력합니다.</strong> 같은 유형 안에서 다른 의도를 가진 케이스가 섞여 있을 때, 의도 축을 더하지 않으면 패턴이 보이지 않습니다.</div></div>
 <div class="insight-item fi"><div class="insight-num">3</div><div class="insight-body"><strong>CRM 필드는 처리 흐름의 입력 단위입니다.</strong> 필드를 잘 설계하면 후속 응대·정산·자동화가 다 따라옵니다. 운영 품질의 시작점입니다.</div></div>
 </div>
@@ -183,4 +183,4 @@ const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.
 document.querySelectorAll('.fi').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight) { el.classList.add('show'); } else { io.observe(el); } });
 </script>
 </body>
-  </html>
+</html>
