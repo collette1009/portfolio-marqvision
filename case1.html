@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case 1. 7개월 보류된 개선안을 사고 시점에 재제안·당일 구현 | 오희은 — 마크비전</title>
+<title>Case 1. 배송 제약 오표시 7개월 추적 → 플랫폼 단 수정 → CS 0건 | 오희은 — 마크비전</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
@@ -30,6 +30,8 @@ nav a:hover { color: var(--charcoal); }
 .sec-alt { background: var(--bg-soft); }
 .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
 .sec-title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; color: var(--charcoal); line-height: 1.3; margin-bottom: 32px; }
+.sec-body { font-size: 15px; color: var(--text-2); line-height: 1.85; max-width: 760px; }
+.sec-body strong { color: var(--text-1); font-weight: 600; }
 .problem-list, .did-list, .insight-list { display: flex; flex-direction: column; gap: 16px; }
 .problem-item, .did-item, .insight-item { padding: 22px 26px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); }
 .problem-item { font-size: 15px; color: var(--text-2); line-height: 1.8; }
@@ -53,6 +55,7 @@ nav a:hover { color: var(--charcoal); }
 .insight-body { font-size: 15px; color: var(--text-2); line-height: 1.85; padding-top: 4px; }
 .insight-body strong { color: var(--text-1); font-weight: 600; }
 .relevance-box { padding: 26px 30px; background: var(--white); border: 1.5px solid var(--charcoal); border-radius: var(--r); }
+.relevance-box .sec-eyebrow { color: var(--charcoal); margin-bottom: 8px; }
 .relevance-box h3 { font-size: 17px; font-weight: 700; color: var(--text-1); margin-bottom: 12px; letter-spacing: -0.01em; }
 .relevance-box p { font-size: 15px; color: var(--text-2); line-height: 1.85; }
 .relevance-box strong { color: var(--text-1); font-weight: 600; }
@@ -80,8 +83,8 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <div class="wrap">
 <section class="case-hero">
 <a href="index.html#cases" class="case-hero-nav"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>전체 케이스로 돌아가기</a>
-<h1 class="case-hero-title">7개월 보류된 개선안을 사고 시점에 다시 꺼내, CTO 재제안·당일 구현으로 끊었습니다</h1>
-<div class="case-hero-summary">반복 문의는 처리 속도가 아니라 <strong>플랫폼 구조의 문제</strong>였습니다.<br>배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 문제를 <strong>처음 발견 시점(2025.9)에 개선안으로 제안해 OK까지 받았지만</strong>, 개발 우선순위에 밀려 7개월간 같은 문의가 반복됐습니다. 두부 라인에서 실제 사고가 터지자 CTO에게 MVP 안을 직접 다시 제안했고, <strong>장바구니 subtext 1줄 추가로 당일 구현 → 일 6~10건의 반복 문의가 0건 수준으로 수렴</strong>했습니다.</div>
+<h1 class="case-hero-title">7개월 보류된 개선안을 재발 시점에 다시 꺼내, CTO 재제안·당일 구현으로 끊었습니다</h1>
+<div class="case-hero-summary">반복 문의는 처리 속도가 아니라 <strong>플랫폼 구조의 문제</strong>였습니다.<br>배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 문제를 <strong>2025.9 발견 시점에 개선안으로 제안해 승인됐지만</strong>, 개발 우선순위에 밀려 7개월간 같은 문의가 반복됐습니다. 두부 라인에서 동일 구조의 문제가 재발하자 누적 데이터와 기존 승인 이력을 묶어 CTO에게 다시 제안했고, <strong>장바구니 subtext 1줄로 당일 구현 → 일 6~10건 반복 문의가 0건 수준으로 수렴</strong>했습니다.</div>
 <div class="case-hero-meta"><span class="meta-chip">이상 신호 탐지</span><span class="meta-chip">7개월 보류 → 재제안</span><span class="meta-chip">CTO 당일 구현</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
 </section>
 </div>
@@ -91,11 +94,11 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec">
 <div class="wrap">
 <p class="sec-eyebrow">Situation</p>
-<h2 class="sec-title">개선안은 이미 OK 받았는데, 7개월간 적용이 미뤄졌습니다</h2>
+<h2 class="sec-title">개선안은 이미 승인됐는데, 7개월간 적용이 미뤄졌습니다</h2>
 <div class="problem-list">
-<div class="problem-item fi"><div class="problem-title">첫 발견 시점에 개선안을 제안해 OK까지 받았습니다 (2025.9)</div>배송 제약 상품(특정 지역 배송 불가)이 재고와 무관하게 '품절'로 표시되는 문제를 처음 발견했을 때, 장바구니 단계에서 사용자에게 사유를 안내하는 MVP 개선안을 정리해 제안했습니다. <strong>유관 담당자 검토를 거쳐 OK까지 받았습니다.</strong></div>
-<div class="problem-item fi"><div class="problem-title">개발 우선순위에 밀려 적용이 7개월 동안 미뤄졌습니다</div>개선안은 승인됐지만 다른 개발 과제들이 우선순위에 들어가면서 적용이 계속 미뤄졌습니다. <strong>같은 문의가 일 6~10건씩 7개월간 반복</strong>됐고, 그 사이에도 CS 팀은 "상품을 하나씩 빼보세요"라는 안내로 같은 응대를 반복해야 했습니다.</div>
-<div class="problem-item fi"><div class="problem-title">두부 라인에서 실제 사고가 터졌습니다 (2026.4)</div>두부·연두부 라인에서 같은 구조의 문제로 실제 사고가 발생하며 반복 문의가 폭증했습니다. 7개월 동안 누적된 동일 패턴 데이터와 함께, <strong>"왜 OK 받은 개선안이 아직 안 들어갔는가"가 다시 화두</strong>가 됐습니다.</div>
+<div class="problem-item fi"><div class="problem-title">첫 발견 시점에 개선안을 제안해 승인을 받았습니다 (2025.9)</div>배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 문제를 발견하고, 장바구니 단계에서 사유를 안내하는 MVP 개선안을 정리해 제안했습니다. <strong>유관 담당자 검토를 거쳐 반영 가능하다는 답변을 받았습니다.</strong></div>
+<div class="problem-item fi"><div class="problem-title">개발 우선순위에 밀려 적용이 7개월간 미뤄졌습니다</div>승인된 개선안이 다른 개발 과제에 밀려 7개월간 적용되지 않았습니다. <strong>같은 문의가 일 6~10건씩 반복</strong>되는 동안 CS 응대로는 막을 수 없는 구조였습니다.</div>
+<div class="problem-item fi"><div class="problem-title">동일 구조의 문제가 두부 라인에서 재발했습니다 (2026.4)</div>두부·연두부 라인에서 동일 구조의 문제가 실제 고객 문의로 재점화되며 반복 문의가 폭증했습니다. 7개월 누적 패턴 데이터와 함께 <strong>"왜 승인된 개선안이 아직 안 들어갔는가"가 다시 의제</strong>로 올라왔습니다.</div>
 </div>
 </div>
 </section>
@@ -105,13 +108,13 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <section class="sec sec-alt">
 <div class="wrap">
 <p class="sec-eyebrow">What I Did</p>
-<h2 class="sec-title">보류된 제안을 사고 시점에 다시 꺼냈습니다</h2>
+<h2 class="sec-title">보류된 제안을 재발 시점에 다시 꺼냈습니다</h2>
 <div class="did-list">
-<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">최초 발견 + MVP 개선안 제안 → OK 획득 (2025.9)</div><div class="did-desc">배송 제약 상품이 재고와 무관하게 '품절'로 표시되는 패턴을 처음 발견했습니다. 장바구니 단계에서 사용자에게 사유를 안내하는 <strong>최소 실행 단위 MVP</strong>를 정리해 유관 담당자에게 별도로 가져갔고, <strong>OK 회신까지 받았습니다.</strong></div></div>
-<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">7개월 보류 — 적용이 계속 미뤄지는 동안 데이터 누적</div><div class="did-desc">OK 받은 개선안이 다른 개발 과제들에 밀려 적용되지 않는 동안, <strong>같은 문의가 일 6~10건씩 7개월간 반복</strong>됐습니다. 단건 응대로 막을 수 없는 구조였고, 적용 지연 비용이 매일 쌓이고 있었습니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">두부 라인 사고 발생 — 재제안 트리거 확보 (2026.4)</div><div class="did-desc">두부·연두부 라인에서 같은 구조의 문제로 실제 사고가 터지면서 반복 문의가 폭증했습니다. 7개월 누적 데이터 + 사고 임팩트가 같은 방향을 가리키고 있었고, <strong>"왜 이 개선안이 아직 안 들어갔는가"가 다시 의제로 올라왔습니다.</strong></div></div>
-<div class="did-item fi"><div class="did-number">Step 04</div><div class="did-title">CTO에게 직접 MVP 재제안 — 데이터·사고·기존 OK 근거 정리</div><div class="did-desc">7개월 누적 VOC 데이터, 두부 사고 임팩트, 기존 승인 이력, MVP 스펙을 한 자료로 묶어 <strong>CTO에게 직접 다시 제안</strong>했습니다. 보류됐던 안건도 트리거와 데이터가 함께 생기면 같은 방향으로 다시 꺼낼 수 있습니다.</div></div>
-<div class="did-item fi"><div class="did-number">Step 05</div><div class="did-title">당일 구현 → 0건 수렴 + 유사 상품군 확장</div><div class="did-desc">제안 → <strong>당일 구현·배포</strong>로 장바구니 subtext 1줄이 추가됐고, 일 6~10건의 반복 문의가 0건 수준으로 수렴했습니다. 상품운영파트가 동일 subtext 구조를 1+1·2+1 프로모션 상품으로 자체 확장 적용했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 01</div><div class="did-title">최초 발견 + MVP 개선안 제안 → 승인 획득 (2025.9)</div><div class="did-desc">'품절' 오표시 패턴을 발견하고, 장바구니 단계 사유 안내 <strong>MVP</strong>를 정리해 유관 담당자에게 제안했습니다. <strong>반영 가능하다는 답변을 받았습니다.</strong></div></div>
+<div class="did-item fi"><div class="did-number">Step 02</div><div class="did-title">7개월 보류 — 같은 문의 반복, 데이터 누적</div><div class="did-desc">승인된 개선안이 우선순위에 밀려 적용되지 않는 동안 <strong>같은 문의가 일 6~10건씩 7개월간 반복</strong>됐고, 적용 지연 비용이 매일 누적됐습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 03</div><div class="did-title">두부 라인 재발 — 재제안 트리거 확보 (2026.4)</div><div class="did-desc">동일 구조의 문제가 두부·연두부 라인에서 실제 고객 문의로 재점화되며 폭증했습니다. <strong>7개월 누적 데이터와 재발 임팩트</strong>가 같은 방향을 가리켰습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 04</div><div class="did-title">CTO에게 MVP 재제안 — 데이터·재발·기존 승인 이력 정리</div><div class="did-desc">7개월 누적 VOC, 재발 임팩트, 기존 승인 이력, MVP 스펙을 한 자료로 묶어 <strong>CTO에게 다시 제안</strong>했습니다.</div></div>
+<div class="did-item fi"><div class="did-number">Step 05</div><div class="did-title">당일 구현 → 0건 수렴 + 유사 상품군 확장</div><div class="did-desc">제안 <strong>당일 구현·배포</strong>로 장바구니 subtext 1줄이 추가됐고, 반복 문의가 0건 수준으로 수렴했습니다. 동일 구조가 1+1·2+1 프로모션 상품군까지 자체 확장됐습니다.</div></div>
 </div>
 </div>
 </section>
@@ -142,8 +145,8 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <p class="sec-eyebrow">Relevance to MarqVision</p>
 <h2 class="sec-title">같은 원리가 침해 운영에도 작동합니다</h2>
 <div class="relevance-box fi">
-<h3>보류된 개선안도 데이터와 트리거가 함께 생기면 다시 들어갑니다</h3>
-<p>위조품·무단 판매·콘텐츠 도용도 <strong>디지털 플랫폼 위에서 반복적으로 포착되는 리스크 신호</strong>입니다. 한 건씩 takedown만 반복하면 같은 패턴이 계속 들어오고, 개선안이 있어도 우선순위에 밀려 적용이 지연되는 일이 흔합니다. 이 케이스는 — <strong>"보류된 안건도 누적 데이터와 사고 트리거가 함께 생기면 같은 방향으로 다시 꺼낼 수 있다"</strong>는 운영 사례입니다. 마크비전이 자동화된 보호 흐름으로 풀려는 문제도 — 패턴을 유형화하고 기술과 연결해 구조를 만드는 일이라고 봤습니다.</p>
+<h3>보류된 안건도 데이터와 재발 트리거가 함께 생기면 다시 들어갑니다</h3>
+<p>위조품·무단 판매·콘텐츠 도용도 <strong>디지털 플랫폼 위에서 반복적으로 포착되는 리스크 신호</strong>입니다. 개별 차단을 반복하는 동안 같은 패턴은 계속 들어오고, 개선안이 있어도 적용이 지연되기 쉽습니다. 이 케이스는 <strong>보류된 안건을 누적 데이터와 재발 트리거로 다시 꺼내 조치 흐름을 정렬한</strong> 운영 사례이고, 패턴 유형화와 자동화를 결합해 구조를 만드는 일이라는 점에서 마크비전이 풀고 있는 문제와 닿아 있다고 봤습니다.</p>
 </div>
 </div>
 </section>
@@ -155,9 +158,9 @@ footer { padding: 48px 0; border-top: 1px solid var(--border); }
 <p class="sec-eyebrow">Insight</p>
 <h2 class="sec-title">이 경험에서 얻은 것</h2>
 <div class="insight-list">
-<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>OK 받은 제안도 보류될 수 있고, 보류된 제안도 다시 꺼낼 수 있습니다.</strong> 처음 승인을 받았다고 끝나는 게 아니라 — 적용 지연이 누적되는 동안 데이터를 모으고, 트리거가 생긴 시점에 다시 의제로 올리는 일이 운영자의 역할입니다.</div></div>
-<div class="insight-item fi"><div class="insight-num">2</div><div class="insight-body"><strong>사고는 가장 강력한 트리거지만, 사고 전에 적용됐어야 했습니다.</strong> 두부 사고가 있어 재제안이 통했다는 사실은 — 같은 안건을 사고 없이 끌어낼 방법을 운영자가 더 일찍 찾았어야 했다는 교훈이기도 합니다. 다음 사이클에서는 사고 전에 트리거를 만드는 방향으로 일하고 있습니다.</div></div>
-<div class="insight-item fi"><div class="insight-num">3</div><div class="insight-body"><strong>장바구니 subtext 1줄이 7개월 반복 문의를 끊었습니다.</strong> 가장 작은 변화로 가장 큰 효과를 낼 수 있는 지점을 짚어 MVP를 설계했을 때, 개발팀이 당일 움직였습니다. 운영기획이 기술 제약을 이해하면 실행까지의 거리가 짧아집니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">1</div><div class="insight-body"><strong>승인된 제안도 보류될 수 있고, 보류된 제안도 다시 꺼낼 수 있습니다.</strong> 적용 지연이 누적되는 동안 데이터를 모으고, 재발 트리거가 생긴 시점에 다시 의제로 올리는 일이 운영자의 역할입니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">2</div><div class="insight-body"><strong>재발은 가장 강력한 트리거지만, 재발 전에 적용됐어야 했습니다.</strong> 다음 사이클에서는 재발 없이 안건을 다시 꺼낼 트리거를 운영자가 더 일찍 만드는 방향으로 일하고 있습니다.</div></div>
+<div class="insight-item fi"><div class="insight-num">3</div><div class="insight-body"><strong>장바구니 subtext 1줄이 7개월 반복 문의를 끊었습니다.</strong> 가장 작은 변화로 가장 큰 효과를 낼 지점을 짚어 MVP로 설계했을 때 운영기획이 기술 제약을 이해할수록 실행까지 거리가 짧아진다는 점을 확인했습니다.</div></div>
 </div>
 </div>
 </section>
@@ -181,4 +184,4 @@ const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.
 document.querySelectorAll('.fi').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight) { el.classList.add('show'); } else { io.observe(el); } });
 </script>
 </body>
-                           </html>
+</html>
