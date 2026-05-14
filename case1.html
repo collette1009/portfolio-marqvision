@@ -136,3 +136,141 @@ document.querySelectorAll('.fi').forEach(el => { const rect = el.getBoundingClie
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 1. 쿠팡·네이버 무단 사용·무단 판매 대응 직접 10여 건 + 현장 enforcement 한계 인식 | 오희은 — 마크비전</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --white: #FFFFFF; --bg-soft: #F7F7F8; --border: #E5E5E6; --text-1: #141416; --text-2: #50505A; --text-3: #909098; --charcoal: #282D32; --charcoal-2: #1A1E21; --charcoal-a: rgba(40,45,50,0.07); --sh-md: 0 4px 20px rgba(0,0,0,0.09); --r: 10px; --r-sm: 6px; --ease: cubic-bezier(.4,0,.2,1); --t: 0.22s; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+.hr { width: 100%; height: 1px; background: var(--border); }
+header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
+header.on { border-bottom-color: var(--border); }
+.h-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 16px; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+nav a { font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color var(--t); }
+nav a:hover { color: var(--charcoal); }
+.case-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+.case-hero-nav { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); text-decoration: none; margin-bottom: 32px; transition: color var(--t); }
+.case-hero-nav:hover { color: var(--charcoal); }
+.case-hero-title { font-size: clamp(26px, 4vw, 34px); font-weight: 800; letter-spacing: -0.03em; color: var(--charcoal); line-height: 1.25; margin-bottom: 20px; max-width: 760px; }
+.case-hero-summary { font-size: 16px; color: var(--text-2); line-height: 1.85; max-width: 760px; padding: 20px 24px; background: var(--bg-soft); border-left: 3px solid var(--charcoal); border-radius: var(--r-sm); margin-bottom: 24px; }
+.case-hero-summary strong { color: var(--text-1); font-weight: 600; }
+.case-hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+.meta-chip { background: var(--charcoal-a); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
+.sec { padding: 56px 0; }
+.sec-alt { background: var(--bg-soft); }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+.sec-title { font-size: clamp(20px, 2.6vw, 24px); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); line-height: 1.35; margin-bottom: 22px; max-width: 760px; }
+.problem-prose { font-size: 16px; color: var(--text-2); line-height: 1.9; max-width: 760px; }
+.problem-prose strong { color: var(--text-1); font-weight: 600; }
+.action-blocks { display: flex; flex-direction: column; gap: 26px; max-width: 760px; }
+.action-block { padding-left: 22px; border-left: 3px solid var(--charcoal); }
+.action-title { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: var(--charcoal); margin-bottom: 8px; }
+.action-desc { font-size: 15px; color: var(--text-2); line-height: 1.85; }
+.action-desc strong { color: var(--text-1); font-weight: 600; }
+.result-badge { display: inline-flex; flex-direction: column; gap: 6px; padding: 22px 32px; background: var(--charcoal); border-radius: var(--r); max-width: 760px; }
+.result-value { font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.2; }
+.result-sub { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+.relevance-line { font-size: 15px; color: var(--text-2); line-height: 1.85; max-width: 760px; }
+.relevance-line strong { color: var(--text-1); font-weight: 600; }
+.nav-cases { display: flex; justify-content: space-between; padding: 28px 0; gap: 16px; }
+.nav-case-link { display: flex; flex-direction: column; gap: 4px; text-decoration: none; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: var(--r); transition: border-color var(--t), box-shadow var(--t); max-width: 380px; }
+.nav-case-link:hover { border-color: var(--charcoal); box-shadow: var(--sh-md); }
+.nav-case-dir { font-size: 12px; font-weight: 600; color: var(--text-3); letter-spacing: 0.05em; }
+.nav-case-title { font-size: 14px; font-weight: 600; color: var(--text-1); line-height: 1.5; }
+footer { padding: 48px 0; border-top: 1px solid var(--border); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer-name { font-size: 20px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.03em; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: var(--r-sm); text-decoration: none; letter-spacing: -0.01em; transition: all var(--t) var(--ease); }
+.btn-dark { background: var(--charcoal); color: var(--white); border: 1.5px solid var(--charcoal); }
+.btn-dark:hover { background: var(--charcoal-2); transform: translateY(-1px); box-shadow: var(--sh-md); }
+.fi { opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.fi.show { opacity: 1; transform: none; }
+@media (max-width: 800px) { .case-hero { padding: 56px 0 44px; } .nav-cases { flex-direction: column; } .nav-case-link { max-width: 100%; } .footer-inner { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 500px) { .case-hero-title { font-size: 22px; } .case-hero-summary { font-size: 14px; padding: 16px 18px; } .result-badge { padding: 18px 22px; } .result-value { font-size: 22px; } }
+</style>
+</head>
+<body>
+
+<header id="hd"><div class="h-inner"><a href="index.html" class="logo">오희은</a><nav><a href="index.html">← 전체 케이스 보기</a></nav></div></header>
+
+<div class="wrap">
+<section class="case-hero">
+<a href="index.html#cases" class="case-hero-nav"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>전체 케이스로 돌아가기</a>
+<h1 class="case-hero-title">쿠팡·네이버 무단 사용·무단 판매 대응 운영에서 직접 10여 건을 처리하며 현장 enforcement 한계를 인식했습니다</h1>
+<div class="case-hero-summary">자사 이미지·상표 무단 사용 판매자 대응 운영에 참여하며 <strong>직접 10여 건의 브랜드 침해 의심 케이스를 탐지·정리하고 대응 흐름에 참여</strong>했습니다. 내용증명·판매 중단 요청·계정 차단 흐름과 우회 재가입 추적까지 경험했고, 사내 지침 기반 차단의 현장 한계를 인식하며 <strong>정식 takedown·AI 기반 증거 수집·문서화·cross-platform enforcement의 필요성을 운영 데이터로 이해</strong>했습니다.</div>
+<div class="case-hero-meta"><span class="meta-chip">무단 사용·브랜드 침해 신호 탐지</span><span class="meta-chip">크로스 플랫폼 운영</span><span class="meta-chip">직접 10여 건</span><span class="meta-chip">현장 한계 인식</span><span class="meta-chip">초록마을 · 2024–재직 중</span></div>
+</section>
+</div>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec">
+<div class="wrap">
+<p class="sec-eyebrow">문제 상황</p>
+<h2 class="sec-title">사내 지침 기반 차단이 사실상 유일한 대응 수단이었습니다</h2>
+<p class="problem-prose fi">쿠팡·네이버 등 주요 마켓플레이스에서 무단 사용 셀러가 지속 발견됐고, 동일 셀러가 차단 후에도 재가입으로 복귀하는 패턴이 있었습니다. <strong>플랫폼 신고가 실효성 있게 작동하지 않아</strong> 사내 지침 기반 자체 차단으로만 대응할 수 있었고, 이마저도 법적 근거가 아닌 운영 정책에 의존했습니다. 오프라인 매장에서 정품을 사입한 뒤 재판매하는 라인은 추적 수단 자체가 없었습니다.</p>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+<div class="wrap">
+<p class="sec-eyebrow">What I Did</p>
+<h2 class="sec-title">팀 운영에 참여하며, 직접 10여 건을 처리하고 현장 갭을 체감했습니다</h2>
+<div class="action-blocks">
+<div class="action-block fi"><div class="action-title">실행 A · 침해 유형 분류 안에서 케이스 식별·라벨링</div><p class="action-desc">팀이 운영하는 침해 유형 분류(저작권·상표·위탁판매·리셀러 의심) 안에서 <strong>새로 발견된 케이스를 식별하고 유형 라벨을 붙이는 일</strong>에 참여했습니다.</p></div>
+<div class="action-block fi"><div class="action-title">실행 B · 직접 10여 건 탐지·정리 + 우회 재가입 추적</div><p class="action-desc">다중 배송지·사업자등록번호·계정 정보 교차 확인으로 리셀러 의심 케이스를 식별해 <strong>직접 10여 건을 탐지·정리하고 대응 흐름에 참여</strong>했으며, 내용증명·판매 중단 요청·계정 차단 흐름을 직접 운영했습니다. 일부는 탈퇴·재가입 우회 추적까지 연결했습니다.</p></div>
+<div class="action-block fi"><div class="action-title">실행 C · 현장 enforcement gap 인식</div><p class="action-desc">대응을 직접 진행하면서 <strong>플랫폼 신고 실효성 부재, 사내 지침 기반 차단 의존, 오프라인 사입 라인 미추적</strong> 등 enforcement gap을 현장에서 직접 체감했고, 법적 근거·AI 기반 정식 takedown 워크플로우의 필요성을 운영 데이터로 이해하게 됐습니다.</p></div>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec">
+<div class="wrap">
+<div class="result-badge fi">
+<div class="result-value">10여 건 · 4가지 갭 인식</div>
+<div class="result-sub">직접 탐지·대응 + 우회 재가입 추적 + 현장 enforcement gap 운영 데이터로 체감</div>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+<div class="wrap">
+<p class="sec-eyebrow">Relevance to MarqVision</p>
+<p class="relevance-line fi">마크비전이 제공하는 <strong>법적 근거 기반 정식 takedown + AI 기반 침해 증거 자동 수집·문서화 + Cross-platform enforcement</strong>가 정확히 현장에서 부딪힌 갭의 해답이라고 운영 데이터로 이해하고 있습니다.</p>
+</div>
+</section>
+
+<div class="wrap">
+<div class="nav-cases">
+<div></div>
+<a href="case2.html" class="nav-case-link" style="text-align:right;">
+<span class="nav-case-dir">다음 케이스 →</span>
+<span class="nav-case-title">Chrome Extension으로 1,151건 처리 + AI 도구 비용 승인</span>
+</a>
+</div>
+</div>
+
+<footer><div class="wrap"><div class="footer-inner"><div class="footer-name">오희은</div><a href="mailto:gldms1009@naver.com" class="btn btn-dark">이메일 보내기</a></div></div></footer>
+
+<script>
+const hd = document.getElementById('hd');
+window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
+const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0 });
+document.querySelectorAll('.fi').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight) { el.classList.add('show'); } else { io.observe(el); } });
+</script>
+</body>
+</html>
